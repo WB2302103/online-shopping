@@ -1,118 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyShop</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 </head>
-<nav class="bg-white border-gray-200 px-4 py-2.5 shadow-md">
-  <div class="container flex flex-wrap items-center justify-between mx-auto">
-    <a href="#" class="flex items-center">
-      <span class="self-center text-xl font-semibold whitespace-nowrap">MyShop</span>
-    </a>
-    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none" aria-controls="navbar-default" aria-expanded="false">
-      <span class="sr-only">Open main menu</span>
-      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 110-2zm0 4h14a1 1 0 010 2H3a1 1 0 110-2zm0 4h14a1 1 0 010 2H3a1 1 0 110-2z" clip-rule="evenodd"></path></svg>
-    </button>
-    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-      <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
-        <li>
-          <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Home</a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Products</a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<!-- Hero Section with Sliding Banner -->
-<section class="relative w-full bg-gray-100">
-  <div id="hero-carousel" class="relative overflow-hidden">
-    <div class="flex transition-transform duration-700 ease-in-out" id="slides">
-      <img src="images/1.jpg" class="w-full object-cover h-64 md:h-96" alt="Banner 1">
-      <img src="images/2.jpg" class="w-full object-cover h-64 md:h-96 hidden" alt="Banner 2">
-      <img src="images/3.jpg" class="w-full object-cover h-64 md:h-96 hidden" alt="Banner 3">
-    </div>
-    <!-- Controls -->
-    <button id="prev-slide" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-2 shadow hover:bg-opacity-100">
-      <i class="fas fa-chevron-left"></i>
-    </button>
-    <button id="next-slide" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-2 shadow hover:bg-opacity-100">
-      <i class="fas fa-chevron-right"></i>
-    </button>
-  </div>
-  <div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-    <p class="mt-4 text-lg md:text-2xl text-gray-600">Best deals on your favorite products!</p>
-  </div>
-</section>
-<script>
-  // Simple sliding banner logic
-  const slides = document.querySelectorAll('#slides img');
-  let currentSlide = 0;
-  function showSlide(index) {
-    slides.forEach((img, i) => {
-      img.classList.toggle('hidden', i !== index);
-    });
-  }
-  document.getElementById('prev-slide').onclick = () => {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-  };
-  document.getElementById('next-slide').onclick = () => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  };
-  // Auto-slide
-  setInterval(() => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }, 4000);
-  showSlide(currentSlide);
-</script>
-<body>
-    
-<div id="products">
-  <div id="display-card">
-  </div>
-  <div id="mycard">
-    <div class="my-card">
-      <h2 class="text-center">My Card</h2>
-      <hr>
-      <h3>Total Products <span id="total-products">0</span></h3>
-      <h3>Price <span id="price">0</span></h3>
-      <h3>Delivery Charge &nbsp&nbsp<span id="delivery-charge">0</span></h3>
-      <hr>
-      <h2>Total Price &nbsp <span id="total">0</span></h2>
-      <button onclick="orderProducts()" class="bg-green-700">Order Now</button>
-      <button onclick="cancelOrder()" class="bg-red-700">Cancel</button>
-      <div id="details">
+<body class="bg-violet-50 text-gray-900">
+  <!-- Navbar -->
+  <nav class="bg-white border-b border-gray-200 px-4 py-2.5 shadow-md">
+    <div class="container flex flex-wrap items-center justify-between mx-auto">
+      <a href="#" class="text-2xl font-bold text-violet-700">MyShop</a>
+      <button data-collapse-toggle="navbar-default" type="button" class="md:hidden text-gray-500">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="hidden md:flex space-x-6">
+        <a href="#" class="hover:text-violet-700">Home</a>
+        <a href="#" class="hover:text-violet-700">Products</a>
+        <a href="#" class="hover:text-violet-700">About</a>
+        <a href="#" class="hover:text-violet-700">Contact</a>
       </div>
     </div>
-  </div>
-</div>
-<script>
-  function cancelOrder() {
-    document.getElementById('total-products').textContent = '0';
-    document.getElementById('price').textContent = '0';
-    document.getElementById('delivery-charge').textContent = '0';
-    document.getElementById('total').textContent = '0';
-    document.getElementById('details').innerHTML = '';
-    alert('Order has been canceled.');
-  }
-</script>
-</div>
-    <script src="app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative w-full bg-violet-100">
+    <div id="hero-carousel" class="relative overflow-hidden">
+      <div class="flex transition-transform duration-700 ease-in-out" id="slides">
+        <img src="images/1.jpg" class="w-full object-cover h-64 md:h-96" alt="Banner 1" />
+        <img src="images/2.jpg" class="w-full object-cover h-64 md:h-96 hidden" alt="Banner 2" />
+        <img src="images/3.jpg" class="w-full object-cover h-64 md:h-96 hidden" alt="Banner 3" />
+      </div>
+      <button id="prev-slide" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-2">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button id="next-slide" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-2">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    <div class="absolute inset-0 flex items-center justify-center text-center pointer-events-none">
+      <p class="text-2xl font-semibold text-violet-800">Best deals on your favorite products!</p>
+    </div>
+  </section>
+
+  <!-- Product & Cart Section -->
+  <main class="max-w-7xl mx-auto p-6 flex flex-col md:flex-row gap-6" id="products">
+    <!-- Product Cards -->
+    <div id="display-card" class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+    <!-- My Cart Panel -->
+    <div id="mycard" class="w-full md:w-80 bg-white shadow-md rounded-lg p-4 border border-violet-200">
+      <div class="my-card text-center">
+        <h2 class="text-xl font-bold text-violet-700 mb-2">My Cart</h2>
+        <hr class="mb-2" />
+        <h3>Total Products: <span id="total-products">0</span></h3>
+        <h3>Price: $<span id="price">0</span></h3>
+        <h3>Delivery Charge: $<span id="delivery-charge">0</span></h3>
+        <hr class="my-2" />
+        <h2 class="text-lg font-semibold">Total: $<span id="total">0</span></h2>
+        <div class="flex flex-col gap-2 mt-4">
+          <button onclick="orderProducts()" class="bg-violet-700 hover:bg-violet-800 text-white px-4 py-2 rounded">Order Now</button>
+          <button onclick="cancelOrder()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">Cancel</button>
+        </div>
+        <div id="details" class="mt-4"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  <script>
+    // Carousel Script
+    const slides = document.querySelectorAll('#slides img');
+    let currentSlide = 0;
+    function showSlide(index) {
+      slides.forEach((img, i) => img.classList.toggle('hidden', i !== index));
+    }
+    document.getElementById('prev-slide').onclick = () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    };
+    document.getElementById('next-slide').onclick = () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    };
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }, 4000);
+    showSlide(currentSlide);
+  </script>
 </body>
 </html>
